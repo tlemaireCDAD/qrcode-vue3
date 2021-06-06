@@ -102,23 +102,41 @@ export default {
   },
   data() {
     return {
-      imageUrl: "" as string
+      imageUrl: "" as string,
+      qrCode: new QRCodeStyling({
+        data: this.value,
+        width: this.width,
+        height: this.height,
+        qrOptions: this.qrOptions,
+        imageOptions: this.imageOptions,
+        dotsOptions: this.dotsOptions,
+        backgroundOptions: this.backgroundOptions,
+        image: this.image,
+        cornersSquareOptions: this.cornersSquareOptions,
+        cornersDotOptions: this.cornersDotOptions
+      })
     };
   },
+  watch: {
+    async data() {
+      this.qrCode = new QRCodeStyling({
+        data: this.value,
+        width: this.width,
+        height: this.height,
+        qrOptions: this.qrOptions,
+        imageOptions: this.imageOptions,
+        dotsOptions: this.dotsOptions,
+        backgroundOptions: this.backgroundOptions,
+        image: this.image,
+        cornersSquareOptions: this.cornersSquareOptions,
+        cornersDotOptions: this.cornersDotOptions
+      });
+
+      this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
+    }
+  },
   async mounted() {
-    const qrCode = new QRCodeStyling({
-      data: this.value,
-      width: this.width,
-      height: this.height,
-      qrOptions: this.qrOptions,
-      imageOptions: this.imageOptions,
-      dotsOptions: this.dotsOptions,
-      backgroundOptions: this.backgroundOptions,
-      image: this.image,
-      cornersSquareOptions: this.cornersSquareOptions,
-      cornersDotOptions: this.cornersDotOptions
-    });
-    this.imageUrl = await qrCode.getImageUrl("png");
+    this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
   }
 };
 </script>
