@@ -1,8 +1,8 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/diadal/vue3-qr-code-styling/badge.svg)](https://snyk.io/test/github/diadal/vue3-qr-code-styling)
+[![Known Vulnerabilities](https://snyk.io/test/github/scholtz/qrcode-vue3/badge.svg)](https://snyk.io/test/github/scholtz/qrcode-vue3)
 
 # Vue3 QR Code Styling
 
-[![Version](https://img.shields.io/npm/v/vue3-qr-code-styling.svg)](https://www.npmjs.org/package/vue3-qr-code-styling)
+[![Version](https://img.shields.io/npm/v/qrcode-vue3.svg)](https://www.npmjs.org/package/qrcode-vue3)
 
 JavaScript library for generating QR codes with a logo and styling.
 
@@ -13,15 +13,15 @@ If you have issues / suggestions / notes / questions, please open an issue or co
 ### Examples
 
 <p float="left">
-<img style="display:inline-block" src="https://raw.githubusercontent.com/diadal/vue3-qr-code-styling/master/src/assets/facebook_example_new.png" width="240" />
-<img style="display:inline-block" src="https://raw.githubusercontent.com/diadal/vue3-qr-code-styling/master/src/assets/qr_code_example.png" width="240" />
-<img style="display:inline-block" src="https://raw.githubusercontent.com/diadal/vue3-qr-code-styling/master/src/assets/telegram_example_new.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/src/assets/facebook_example_new.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/src/assets/qr_code_example.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/src/assets/telegram_example_new.png" width="240" />
 </p>
 
 ### Installation
 
 ```
-npm install vue3-qr-code-styling
+npm install qrcode-vue3 --save
 ```
 
 ### Usage
@@ -214,10 +214,10 @@ Gradient colorStops structure
 | name      | string                         | `'qr'`        | Name of the downloaded file |
 | extension | string (`'png' 'jpeg' 'webp'`) | `'png'`       | File extension              |
 
-if any issue [check](https://github.com/diadal/vue3-qr-code-styling/issues)
+if any issue [check](https://github.com/scholtz/qrcode-vue3/issues)
 
 _also you can buy me a coffee @ [Patreon](https://www.patreon.com/diadal)_
 
 ### License
 
-[MIT License](https://raw.githubusercontent.com/diadal/vue3-qr-code-styling/master/LICENSE). Copyright (c) 2021 Diadal Nig
+[MIT License](https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/LICENSE). Copyright (c) 2021 Diadal Nig
