@@ -118,7 +118,7 @@ export default {
     };
   },
   watch: {
-    async data() {
+    async value() {
       this.qrCode = new QRCodeStyling({
         data: this.value,
         width: this.width,
