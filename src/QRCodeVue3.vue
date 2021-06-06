@@ -107,7 +107,16 @@ export default {
   },
   async mounted() {
     const qrCode = new QRCodeStyling({
-      data: this.value
+      data: this.value,
+      width: this.width,
+      height: this.height,
+      qrOptions: this.qrOptions,
+      imageOptions: this.imageOptions,
+      dotsOptions: this.dotsOptions,
+      backgroundOptions: this.backgroundOptions,
+      image: this.image,
+      cornersSquareOptions: this.cornersSquareOptions,
+      cornersDotOptions: this.cornersDotOptions
     });
     this.imageUrl = await qrCode.getImageUrl("png");
   }
