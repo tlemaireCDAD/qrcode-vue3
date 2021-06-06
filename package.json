@@ -1,5 +1,5 @@
 {
-  "name": "vue3-qr-code-styling",
+  "name": "qrcode-vue3",
   "version": "1.4.5",
   "description": "Add a style and an image to your QR code Vue3",
   "main": "src/index.js",
@@ -8,10 +8,8 @@
     "src"
   ],
   "dependencies": {
-    "@vue/compiler-sfc": "^3.0.6",
-    "qrcode-generator": "^1.4.3",
-    "vue": "^3.0.6",
-    "vue-loader": "^16.1.2"
+    "@chenfengyuan/vue-qrcode": "^1.0.2",
+    "qrcode-generator": "^1.4.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.13.0",
@@ -33,16 +31,19 @@
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.7.3",
+    "vue": "^3.0.11",
+    "@vue/compiler-sfc": "^3.0.6",
+    "vue-loader": "^16.1.2"
   },
   "scripts": {
     "build": "webpack --mode=production --config webpack.config.build.js && copyfiles -f ./src/*.vue lib",
     "build:dev": "webpack --mode=development --config webpack.config.build.js",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diadal/vue3-qr-code-styling.git"
+    "url": "git+https://github.com/scholtz/vue3-qr-code-styling.git"
   },
   "keywords": [
     "qr",
@@ -60,10 +61,10 @@
     "logo",
     "design"
   ],
-  "author": "Diadal <info@diadal.com.ng>",
+  "author": "Ludovit Scholtz <ludovit@scholtz.sk>, Diadal <info@diadal.com.ng>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/diadal/vue3-qr-code-styling/issues"
+    "url": "https://github.com/scholtz/vue3-qr-code-styling/issues"
   },
-  "homepage": "https://github.com/diadal/vue3-qr-code-styling"
+  "homepage": "https://github.com/scholtz/vue3-qr-code-styling"
 }

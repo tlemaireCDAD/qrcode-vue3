@@ -29,10 +29,15 @@ npm install vue3-qr-code-styling
 ```HTML
 <template>
   <div>
-   <VueQr3
+  
+   <QRCodeVue3
+          value="Simple QR code"
+        />
+
+   <QRCodeVue3
           :width="200"
           :height="200"
-          data="https://diadal.com.ng"
+          value="https://scholtz.sk"
           :qrOptions="{ typeNumber: 0, mode: 'Byte', errorCorrectionLevel: 'H' }"
           :imageOptions="{ hideBackgroundDots: true, imageSize: 0.4, margin: 0 }"
           :dotsOptions="{
@@ -48,7 +53,6 @@ npm install vue3-qr-code-styling
             },
           }"
           :backgroundOptions="{ color: '#ffffff' }"
-          image="https://diadal.com.ng/icons/favicon-96x96.png"
           :cornersSquareOptions="{ type: 'dot', color: '#000000' }"
           :cornersDotOptions="{ type: undefined, color: '#000000' }"
           fileExt="png"
@@ -57,36 +61,20 @@ npm install vue3-qr-code-styling
           imgclass="img-qr"
           downloadButton="my-button"
           :downloadOptions="{ name: 'vqr', extension: 'png' }"
-        >
-    </VueQr3>
+        />
   </div>
 </template>
 
-<script lang="ts">
-import {
-  defineComponent,
-  onBeforeUnmount,
-  defineAsyncComponent
-} from 'vue'
+<script>
+import QRCodeVue3 from "qrcode-vue3";
 
-export default defineComponent({
-  name: 'VueQr3',
+export default {
+  name: 'QRCodeVue3Example',
   components: {
-    VueQr3: defineAsyncComponent(() =>
-      Promise.resolve(import('vue3-qr-code-styling'))
-    )
+    QRCodeVue3
   },
-  setup () {
-    return {
-    }
-  }
-})
+}
 </script>
-
-<style lang="sass">
-.my-qur
-//   overflow-wrap: anywhere
-</style>
 ```
 
 ### API Documentation
@@ -110,7 +98,7 @@ export default defineComponent({
 | imgclass                | string | ''            | Image class                                           |
 | downloadButton          | string | ''            | download button class                                 |
 | downloadOptions         | object |               | download option name and extension                    |
-| data                    | string |               | The date will be encoded to the QR code               |
+| value                   | string |               | The date will be encoded to the QR code               |
 | image                   | string |               | The image will be copied to the center of the QR code |
 | margin                  | number | `0`           | Margin around canvas                                  |
 | qrOptions               | object |               | Options will be passed to `qrcode-generator` lib      |

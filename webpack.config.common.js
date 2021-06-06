@@ -1,7 +1,6 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const { VueLoaderPlugin } = require('vue-loader')
-
+const { VueLoaderPlugin } = require("vue-loader");
 
 const rootPath = path.resolve(__dirname, "./");
 const srcPath = path.resolve(rootPath, "src");
@@ -18,26 +17,30 @@ module.exports = {
   },
   module: {
     rules: [
-       {
+      {
         test: /\.vue$/,
-        use: 'vue-loader',
+        use: "vue-loader",
         exclude: /node_modules/
       },
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         exclude: /node_modules/,
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          appendTsSuffixTo: [/\.vue$/]
         }
-      },
+      }
     ]
   },
   plugins: [new VueLoaderPlugin(), new CleanWebpackPlugin()],
   resolve: {
-    extensions: ['.ts', '.js', '.vue'],
-    alias: {
-      'vue': '@vue/runtime-dom'
-    }
+    extensions: [".ts", ".js", ".vue"]
   },
+  externals: {
+    // define module 'vue' which will point to window.Vue in result bundle
+    vue: "vue",
+    compilerSfc: "@vue/compiler-sfc",
+    vueQrcode: "chenfengyuan/vue-qrcode",
+    qrcodeGenerator: "qrcode-generator"
+  }
 };

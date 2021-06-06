@@ -10,7 +10,7 @@
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "noImplicitAny": true,
-        "noImplicitThis": true,
+        "noImplicitThis": false,
         "alwaysStrict": true,
         "strictNullChecks": true,
         "forceConsistentCasingInFileNames": true,
