@@ -1,6 +1,6 @@
 {
   "name": "qrcode-vue3",
-  "version": "1.4.16",
+  "version": "1.4.17",
   "description": "Add a style and an image to your QR code Vue3",
   "main": "lib/index.js",
   "types": "src/index.d.ts",
