@@ -10,6 +10,11 @@ this clone copy of https://qr-code-styling.com
 
 If you have issues / suggestions / notes / questions, please open an issue or contact me. Let's create a cool library together.
 
+### Support this project
+
+<p>Please donate algorand to support this project:</p>
+<img src="https://scholtz.github.io/wallet/donate.png" alt="Donate" width="240" height="240" style="max-width: 100%;">
+
 ### Examples
 
 <p float="left">
@@ -22,6 +27,12 @@ If you have issues / suggestions / notes / questions, please open an issue or co
 
 ```
 npm install qrcode-vue3 --save
+```
+
+### QR Code Scanner
+If you are looking for QR code reader, see [qrcode-reader-vue3](https://github.com/scholtz/qrcode-reader-vue3/) project
+```bash
+npm install --save qrcode-reader-vue3
 ```
 
 ### Usage
