@@ -11,8 +11,9 @@
   </div>
 </template>
 <script lang="ts">
+import { defineComponent } from 'vue'
 import QRCodeStyling from "./core/QRCodeStyling";
-export default {
+export default defineComponent({
   name: "QRCodeVue3",
   props: {
     width: {
@@ -138,5 +139,5 @@ export default {
   async mounted() {
     this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
   }
-};
+});
 </script>
