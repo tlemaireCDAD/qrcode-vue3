@@ -22,6 +22,7 @@ export type Gradient = {
 export type Options = {
   width?: number;
   height?: number;
+  margin?: number;
   data?: string;
   image?: string;
   qrOptions?: {
