@@ -11,7 +11,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 import QRCodeStyling from "./core/QRCodeStyling";
 export default defineComponent({
   name: "QRCodeVue3",
@@ -39,6 +39,10 @@ export default defineComponent({
     height: {
       type: Number,
       default: 300
+    },
+    margin: {
+      type: Number,
+      default: 0
     },
     value: {
       type: String,
@@ -108,6 +112,7 @@ export default defineComponent({
         data: this.value,
         width: this.width,
         height: this.height,
+        margin: this.margin,
         qrOptions: this.qrOptions,
         imageOptions: this.imageOptions,
         dotsOptions: this.dotsOptions,
