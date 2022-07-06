@@ -129,6 +129,7 @@ export default defineComponent({
         data: this.value,
         width: this.width,
         height: this.height,
+        margin: this.margin,
         qrOptions: this.qrOptions,
         imageOptions: this.imageOptions,
         dotsOptions: this.dotsOptions,
