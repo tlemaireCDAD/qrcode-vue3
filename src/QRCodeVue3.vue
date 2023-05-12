@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { computed, reactive, ref, watch } from "vue";
 import QRCodeStyling from "./core/QRCodeStyling";
 
 export interface Props {
+  modelValue: string;
   width: number;
   height: number;
   margin: number;
@@ -9,7 +11,6 @@ export interface Props {
   myclass: string;
   downloadButton: string;
   ButtonName: string;
-  value: string;
   qrOptions: any;
   imageOptions: any;
   dotsOptions: any;
@@ -23,6 +24,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  modelValue: "",
   width: 300,
   height: 300,
   margin: 0,
@@ -58,38 +60,78 @@ const props = withDefaults(defineProps<Props>(), {
   downloadOptions: { name: "vqr", extension: "png" }
 });
 
-const qrCode = new QRCodeStyling({
-  data: props.value,
-  width: props.width,
-  height: props.height,
-  margin: props.margin,
-  qrOptions: props.qrOptions,
-  imageOptions: props.imageOptions,
-  dotsOptions: props.dotsOptions,
-  backgroundOptions: props.backgroundOptions,
-  image: props.image,
-  cornersSquareOptions: props.cornersSquareOptions,
-  cornersDotOptions: props.cornersDotOptions
-});
+const emit = defineEmits(["update:modelValue"]);
 
-function onDownloadClick() {
-  qrCode.download(this.downloadOptions);
-}
-let imageUrl = "";
-qrCode.getImageUrl(props.fileExt).then((r) => {
-  imageUrl = r;
+const model = computed({
+  get() {
+    console.log("props.modelValue:", props.modelValue);
+    return props.modelValue;
+  },
+
+  set(value) {
+    console.log("props.modelValue.set:", value);
+    return emit("update:modelValue", value);
+  }
 });
+const state = reactive({
+  img: ""
+});
+const qrCode = ref(
+  new QRCodeStyling({
+    data: model.value,
+    width: props.width,
+    height: props.height,
+    margin: props.margin,
+    qrOptions: props.qrOptions,
+    imageOptions: props.imageOptions,
+    dotsOptions: props.dotsOptions,
+    backgroundOptions: props.backgroundOptions,
+    image: props.image,
+    cornersSquareOptions: props.cornersSquareOptions,
+    cornersDotOptions: props.cornersDotOptions
+  })
+);
+console.log("model.value:", model.value, qrCode.value);
+
+const componentKey = ref(0);
+
+const forceRender = () => {
+  componentKey.value += 1;
+};
+
+const img2 = await qrCode.value.getImageUrl(props.fileExt);
+console.log("img2", img2);
+forceRender();
+/*.then((r) => {
+  state.img = r;
+  console.log("state.img.1", r, componentKey.value);
+  forceRender();
+});*/
+
+// function onDownloadClick() {
+//   qrCode.value.download(this.downloadOptions);
+// }
+watch(
+  () => qrCode,
+  () => {
+    console.log("qrCode", qrCode);
+    qrCode.value.getImageUrl(props.fileExt).then((r) => {
+      state.img = r;
+      console.log("state.img.2", r, componentKey.value);
+      forceRender();
+    });
+  }
+);
+watch(
+  () => state.img,
+  () => {
+    console.log("state.img", state.img);
+  }
+);
+
+console.log("props.modelValue", props.modelValue);
 </script>
 
 <template>
-  <div>
-    <div v-if="imageUrl" :class="myclass">
-      <img :src="imageUrl" :class="imgclass" crossorigin="anonymous" />
-    </div>
-    <div v-if="download">
-      <button @click="onDownloadClick" :class="downloadButton">
-        {{ ButtonName }}
-      </button>
-    </div>
-  </div>
+  <div><span>QR</span></div>
 </template>
