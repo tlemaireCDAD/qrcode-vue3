@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //import { computed, reactive, ref, watch } from "vue";
-import QRCodeVue3Async from "./QRCodeVue3Async.vue";
+import QRCodeStyling from "./core/QRCodeStyling";
 
 export interface Props {
   value: string;
@@ -58,29 +58,37 @@ const props = withDefaults(defineProps<Props>(), {
   download: false,
   downloadOptions: { name: "vqr", extension: "png" }
 });
+
+const qrCode = new QRCodeStyling({
+  data: props.value,
+  width: props.width,
+  height: props.height,
+  margin: props.margin,
+  qrOptions: props.qrOptions,
+  imageOptions: props.imageOptions,
+  dotsOptions: props.dotsOptions,
+  backgroundOptions: props.backgroundOptions,
+  image: props.image,
+  cornersSquareOptions: props.cornersSquareOptions,
+  cornersDotOptions: props.cornersDotOptions
+});
+
+let imageUrl = await qrCode.getImageUrl(props.fileExt);
+
+function onDownloadClick() {
+  qrCode.download(this.downloadOptions);
+}
 </script>
 
 <template>
-  <Suspense>
-    <QRCodeVue3Async
-      :background-options="props.backgroundOptions"
-      :button-name="props.ButtonName"
-      :corners-dot-options="props.cornersDotOptions"
-      :corners-square-options="props.cornersSquareOptions"
-      :dots-options="props.dotsOptions"
-      :download="props.download"
-      :download-button="props.downloadButton"
-      :download-options="props.downloadOptions"
-      :file-ext="props.fileExt"
-      :height="props.height"
-      :image="props.image"
-      :image-options="props.imageOptions"
-      :imgclass="props.imgclass"
-      :margin="props.margin"
-      :model-value="props.value"
-      :myclass="props.myclass"
-      :qr-options="props.qrOptions"
-      :width="props.width"
-    />
-  </Suspense>
+  <div>
+    <div v-if="imageUrl" :class="myclass">
+      <img :src="imageUrl" :class="imgclass" crossorigin="anonymous" />
+    </div>
+    <div v-if="imageUrl && download">
+      <button @click="onDownloadClick" :class="downloadButton">
+        {{ ButtonName }}
+      </button>
+    </div>
+  </div>
 </template>
