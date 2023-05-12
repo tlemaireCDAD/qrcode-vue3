@@ -142,8 +142,8 @@ export default defineComponent({
       this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
     }
   },
-  methods:{
-    onDownloadClick(){
+  methods: {
+    onDownloadClick() {
       this.qrCode.download(this.downloadOptions);
     }
   },
