@@ -76,7 +76,7 @@ const qrCode = new QRCodeStyling({
 let imageUrl = await qrCode.getImageUrl(props.fileExt);
 
 function onDownloadClick() {
-  qrCode.download(this.downloadOptions);
+  qrCode.download(props.downloadOptions);
 }
 </script>
 
