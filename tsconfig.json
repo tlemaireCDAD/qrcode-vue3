@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "module": "ESNext",
-    "target": "es5",
+    "target": "ESNext",
     "allowJs": true,
     "moduleResolution": "node",
     "declaration": true,

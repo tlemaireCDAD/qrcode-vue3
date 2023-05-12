@@ -1,3 +1,62 @@
+<script lang="ts" setup>
+import QRCodeStyling from "./core/QRCodeStyling";
+
+const props = defineProps<{
+  width: 300;
+  height: 300;
+  margin: 0;
+  imgclass: "";
+  myclass: "";
+  downloadButton: "";
+  ButtonName: "Download";
+  value: "";
+  qrOptions: {
+    typeNumber: 0;
+    mode: "Byte";
+    errorCorrectionLevel: "Q";
+  };
+  imageOptions: { hideBackgroundDots: true; imageSize: 0.4; margin: 0 };
+  dotsOptions: {
+    type: "dots";
+    color: "#6a1a4c";
+    gradient: {
+      type: "linear";
+      rotation: 0;
+      colorStops: [{ offset: 0; color: "#6a1a4c" }, { offset: 1; color: "#6a1a4c" }];
+    };
+  };
+  backgroundOptions: { color: "#ffffff" };
+  cornersSquareOptions: { type: "dot"; color: "#000000" };
+  cornersDotOptions: { type: undefined; color: "#000000" };
+  fileExt: "png";
+  image: "";
+  download: false;
+  downloadOptions: { name: "vqr"; extension: "png" };
+}>();
+
+const qrCode = new QRCodeStyling({
+  data: props.value,
+  width: props.width,
+  height: props.height,
+  margin: props.margin,
+  qrOptions: props.qrOptions,
+  imageOptions: props.imageOptions,
+  dotsOptions: props.dotsOptions,
+  backgroundOptions: props.backgroundOptions,
+  image: props.image,
+  cornersSquareOptions: props.cornersSquareOptions,
+  cornersDotOptions: props.cornersDotOptions
+});
+
+function onDownloadClick() {
+  qrCode.download(this.downloadOptions);
+}
+let imageUrl = "";
+qrCode.getImageUrl(props.fileExt).then((r) => {
+  imageUrl = r;
+});
+</script>
+
 <template>
   <div>
     <div v-if="imageUrl" :class="myclass">
@@ -10,145 +69,3 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
-import QRCodeStyling from "./core/QRCodeStyling";
-export default defineComponent({
-  name: "QRCodeVue3",
-  props: {
-    width: {
-      type: Number,
-      default: 300
-    },
-    imgclass: {
-      type: String,
-      default: ""
-    },
-    myclass: {
-      type: String,
-      default: ""
-    },
-    downloadButton: {
-      type: String,
-      default: ""
-    },
-    ButtonName: {
-      type: String,
-      default: "Download3"
-    },
-    height: {
-      type: Number,
-      default: 300
-    },
-    margin: {
-      type: Number,
-      default: 0
-    },
-    value: {
-      type: String,
-      required: true
-    },
-    image: {
-      type: String,
-      default: ""
-    },
-    qrOptions: {
-      type: Object,
-      default: () => ({
-        typeNumber: 0,
-        mode: "Byte",
-        errorCorrectionLevel: "Q"
-      })
-    },
-    imageOptions: {
-      type: Object,
-      default: () => ({ hideBackgroundDots: true, imageSize: 0.4, margin: 0 })
-    },
-    dotsOptions: {
-      type: Object,
-      default: () => ({
-        type: "dots",
-        color: "#6a1a4c",
-        gradient: {
-          type: "linear",
-          rotation: 0,
-          colorStops: [
-            { offset: 0, color: "#6a1a4c" },
-            { offset: 1, color: "#6a1a4c" }
-          ]
-        }
-      })
-    },
-    backgroundOptions: {
-      type: Object,
-      default: () => ({ color: "#ffffff" })
-    },
-    cornersSquareOptions: {
-      type: Object,
-      default: () => ({ type: "dot", color: "#000000" })
-    },
-    cornersDotOptions: {
-      type: Object,
-      default: () => ({ type: undefined, color: "#000000" })
-    },
-    fileExt: {
-      type: String,
-      default: "png"
-    },
-    download: {
-      type: Boolean,
-      default: false
-    },
-
-    downloadOptions: {
-      type: Object,
-      default: () => ({ name: "vqr", extension: "png" })
-    }
-  },
-  data() {
-    return {
-      imageUrl: "" as string,
-      qrCode: new QRCodeStyling({
-        data: this.value,
-        width: this.width,
-        height: this.height,
-        margin: this.margin,
-        qrOptions: this.qrOptions,
-        imageOptions: this.imageOptions,
-        dotsOptions: this.dotsOptions,
-        backgroundOptions: this.backgroundOptions,
-        image: this.image,
-        cornersSquareOptions: this.cornersSquareOptions,
-        cornersDotOptions: this.cornersDotOptions
-      })
-    };
-  },
-  watch: {
-    async value() {
-      this.qrCode = new QRCodeStyling({
-        data: this.value,
-        width: this.width,
-        height: this.height,
-        margin: this.margin,
-        qrOptions: this.qrOptions,
-        imageOptions: this.imageOptions,
-        dotsOptions: this.dotsOptions,
-        backgroundOptions: this.backgroundOptions,
-        image: this.image,
-        cornersSquareOptions: this.cornersSquareOptions,
-        cornersDotOptions: this.cornersDotOptions
-      });
-
-      this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
-    }
-  },
-  methods: {
-    onDownloadClick() {
-      this.qrCode.download(this.downloadOptions);
-    }
-  },
-  async mounted() {
-    this.imageUrl = await this.qrCode.getImageUrl(this.fileExt);
-  }
-});
-</script>
