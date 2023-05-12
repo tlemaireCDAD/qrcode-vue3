@@ -3,6 +3,7 @@
 
 # Lib folder
 /lib
+/dist
 
 # npm modules
 /node_modules
