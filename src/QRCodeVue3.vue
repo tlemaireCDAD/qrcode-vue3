@@ -1,38 +1,62 @@
 <script lang="ts" setup>
 import QRCodeStyling from "./core/QRCodeStyling";
 
-const props = defineProps<{
-  width: 300;
-  height: 300;
-  margin: 0;
-  imgclass: "";
-  myclass: "";
-  downloadButton: "";
-  ButtonName: "Download";
-  value: "";
+export interface Props {
+  width: number;
+  height: number;
+  margin: number;
+  imgclass: string;
+  myclass: string;
+  downloadButton: string;
+  ButtonName: string;
+  value: string;
+  qrOptions: any;
+  imageOptions: any;
+  dotsOptions: any;
+  backgroundOptions: any;
+  cornersSquareOptions: any;
+  cornersDotOptions: any;
+  fileExt: string;
+  image: string;
+  download: boolean;
+  downloadOptions: any;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  width: 300,
+  height: 300,
+  margin: 0,
+  imgclass: "",
+  myclass: "",
+  downloadButton: "",
+  ButtonName: "Download",
+  value: "",
   qrOptions: {
-    typeNumber: 0;
-    mode: "Byte";
-    errorCorrectionLevel: "Q";
-  };
-  imageOptions: { hideBackgroundDots: true; imageSize: 0.4; margin: 0 };
+    typeNumber: 0,
+    mode: "Byte",
+    errorCorrectionLevel: "Q"
+  },
+  imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 0 },
   dotsOptions: {
-    type: "dots";
-    color: "#6a1a4c";
+    type: "dots",
+    color: "#6a1a4c",
     gradient: {
-      type: "linear";
-      rotation: 0;
-      colorStops: [{ offset: 0; color: "#6a1a4c" }, { offset: 1; color: "#6a1a4c" }];
-    };
-  };
-  backgroundOptions: { color: "#ffffff" };
-  cornersSquareOptions: { type: "dot"; color: "#000000" };
-  cornersDotOptions: { type: undefined; color: "#000000" };
-  fileExt: "png";
-  image: "";
-  download: false;
-  downloadOptions: { name: "vqr"; extension: "png" };
-}>();
+      type: "linear",
+      rotation: 0,
+      colorStops: [
+        { offset: 0, color: "#6a1a4c" },
+        { offset: 1, color: "#6a1a4c" }
+      ]
+    }
+  },
+  backgroundOptions: { color: "#ffffff" },
+  cornersSquareOptions: { type: "dot", color: "#000000" },
+  cornersDotOptions: { type: undefined, color: "#000000" },
+  fileExt: "png",
+  image: "",
+  download: false,
+  downloadOptions: { name: "vqr", extension: "png" }
+});
 
 const qrCode = new QRCodeStyling({
   data: props.value,
