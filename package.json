@@ -1,7 +1,7 @@
 {
   "name": "qrcode-vue3",
   "private": false,
-  "version": "1.5.39",
+  "version": "1.5.40",
   "type": "module",
   "description": "Add a style and an image to your QR code Vue3",
   "main": "./dist/index.umd.js",
@@ -13,7 +13,6 @@
     "dist"
   ],
   "dependencies": {
-    "@chenfengyuan/vue-qrcode": "^2.0.0",
     "qrcode-generator": "^1.4.4"
   },
   "devDependencies": {
