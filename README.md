@@ -4,18 +4,25 @@
 
 [![Version](https://img.shields.io/npm/v/qrcode-vue3.svg)](https://www.npmjs.org/package/qrcode-vue3)
 
+## DEMO
+
+- [Demo presentation](https://qrcode-vue3-sample.vercel.app)
+- [Demo source code](https://github.com/scholtz/qrcode-vue3-sample)
+
+## Description
+
 JavaScript library for generating QR codes with a logo and styling.
 
 this clone copy of https://qr-code-styling.com
 
 If you have issues / suggestions / notes / questions, please open an issue or contact me. Let's create a cool library together.
 
-### Support this project
+## Support this project
 
 <p>Please donate algorand to support this project:</p>
 <img src="https://scholtz.github.io/wallet/donate.png" alt="Donate" width="240" height="240" style="max-width: 100%;">
 
-### Examples
+## Examples
 
 <p float="left">
 <img style="display:inline-block" src="https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/src/assets/facebook_example_new.png" width="240" />
@@ -23,24 +30,26 @@ If you have issues / suggestions / notes / questions, please open an issue or co
 <img style="display:inline-block" src="https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/src/assets/telegram_example_new.png" width="240" />
 </p>
 
-### Installation
+## Installation
 
 ```
 npm install qrcode-vue3 --save
 ```
 
-### QR Code Scanner
+## QR Code Scanner
+
 If you are looking for QR code reader, see [qrcode-reader-vue3](https://github.com/scholtz/qrcode-reader-vue3/) project
+
 ```bash
 npm install --save qrcode-reader-vue3
 ```
 
-### Usage
+## Usage
 
 ```HTML
 <template>
   <div>
-  
+
    <QRCodeVue3
           value="Simple QR code"
         />
@@ -88,9 +97,9 @@ export default {
 </script>
 ```
 
-### API Documentation
+## API Documentation
 
-#### VQRCodeStyling instance
+### VQRCodeStyling instance
 
 `new VQRCodeStyling(options) => VQRCodeStyling`
 
@@ -100,24 +109,24 @@ export default {
 
 `options` structure
 
-| Property                | Type   | Default Value | Description                                           |
-| ----------------------- | ------ | ------------- | ----------------------------------------------------- |
-| width                   | number | `300`         | Size of canvas                                        |
-| height                  | number | `300`         | Size of canvas                                        |
-| download                | boolean| false         | To endable download button                            |
-| myclass                 | string | ''            | Image DIV class                                       |
-| imgclass                | string | ''            | Image class                                           |
-| downloadButton          | string | ''            | download button class                                 |
-| downloadOptions         | object |               | download option name and extension                    |
-| value                   | string |               | The date will be encoded to the QR code               |
-| image                   | string |               | The image will be copied to the center of the QR code |
-| margin                  | number | `0`           | Margin around canvas                                  |
-| qrOptions               | object |               | Options will be passed to `qrcode-generator` lib      |
-| imageOptions            | object |               | Specific image options, details see below             |
-| dotsOptions             | object |               | Dots styling options                                  |
-| cornersSquareOptions    | object |               | Square in the corners styling options                 |
-| cornersDotOptionsHelper | object |               | Dots in the corners styling options                   |
-| backgroundOptions       | object |               | QR background styling options                         |
+| Property                | Type    | Default Value | Description                                           |
+| ----------------------- | ------- | ------------- | ----------------------------------------------------- |
+| width                   | number  | `300`         | Size of canvas                                        |
+| height                  | number  | `300`         | Size of canvas                                        |
+| download                | boolean | false         | To endable download button                            |
+| myclass                 | string  | ''            | Image DIV class                                       |
+| imgclass                | string  | ''            | Image class                                           |
+| downloadButton          | string  | ''            | download button class                                 |
+| downloadOptions         | object  |               | download option name and extension                    |
+| value                   | string  |               | The date will be encoded to the QR code               |
+| image                   | string  |               | The image will be copied to the center of the QR code |
+| margin                  | number  | `0`           | Margin around canvas                                  |
+| qrOptions               | object  |               | Options will be passed to `qrcode-generator` lib      |
+| imageOptions            | object  |               | Specific image options, details see below             |
+| dotsOptions             | object  |               | Dots styling options                                  |
+| cornersSquareOptions    | object  |               | Square in the corners styling options                 |
+| cornersDotOptionsHelper | object  |               | Dots in the corners styling options                   |
+| backgroundOptions       | object  |               | QR background styling options                         |
 
 `options.qrOptions` structure
 
@@ -198,7 +207,7 @@ Gradient colorStops structure
 | offset   | number (`0 - 1`) |               | Position of color in gradient range |
 | color    | string           |               | Color of stop in gradient range     |
 
-#### VQRCodeStyling methods
+### VQRCodeStyling methods
 
 `VQRCodeStyling.append(container) => void`
 
@@ -229,6 +238,6 @@ if any issue [check](https://github.com/scholtz/qrcode-vue3/issues)
 
 _also you can buy me a coffee @ [Patreon](https://www.patreon.com/diadal)_
 
-### License
+## License
 
-[MIT License](https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/LICENSE). Copyright (c) 2021 Diadal Nig
+[MIT License](https://raw.githubusercontent.com/scholtz/qrcode-vue3/master/LICENSE). Copyright (c) 2021 Diadal Nig, Ludovit Scholtz
