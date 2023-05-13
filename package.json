@@ -51,7 +51,7 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "dev:vite": "vite",
-    "build:vite": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build",
     "preview:vite": "vite preview"
   },
   "repository": {
