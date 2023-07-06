@@ -6,8 +6,15 @@
 
 ## DEMO
 
+### Vite.JS DEMO
+
 - [Demo presentation](https://qrcode-vue3-sample.vercel.app)
 - [Demo source code](https://github.com/scholtz/qrcode-vue3-sample)
+
+### Quasar DEMO
+
+- [Demo presentation](https://scholtz.github.io/qrcode-quasar/)
+- [Demo source code](https://github.com/scholtz/qrcode-quasar)
 
 ## Description
 
