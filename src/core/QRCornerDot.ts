@@ -10,13 +10,6 @@ type DrawArgs = {
   rotation: number;
 };
 
-type BasicFigureDrawArgs = {
-  x: number;
-  y: number;
-  size: number;
-  context: CanvasRenderingContext2D;
-  rotation: number;
-};
 
 type RotateFigureArgs = {
   x: number;
@@ -39,24 +32,21 @@ export default class QRCornerDot {
   draw(x: number, y: number, size: number, rotation: number): void {
     const context = this._context;
     const type = this._type;
-    let drawFunction;
-
     switch (type) {
       case cornerDotTypes.square:
-        drawFunction = this._drawSquare;
+        this._drawSquare({ x, y, size, context, rotation });
         break;
       case cornerDotTypes.dot:
       default:
-        drawFunction = this._drawDot;
-    }
-
-    drawFunction.call(this, { x, y, size, context, rotation });
+        this._drawDot({ x, y, size, context, rotation });
+        //this._drawDot({ x, y, size, context, rotation });;
+    }  
   }
 
   _rotateFigure({ x, y, size, context, rotation, draw }: RotateFigureArgs): void {
     const cx = x + size / 2;
     const cy = y + size / 2;
-
+    context.moveTo(0, 0)
     context.translate(cx, cy);
     rotation && context.rotate(rotation);
     draw();
@@ -65,33 +55,28 @@ export default class QRCornerDot {
     context.translate(-cx, -cy);
   }
 
-  _basicDot(args: BasicFigureDrawArgs): void {
+  _drawDot(args: DrawArgs): void {
     const { size, context } = args;
 
     this._rotateFigure({
       ...args,
       draw: () => {
+        context.moveTo(0, 0)
         context.arc(0, 0, size / 2, 0, Math.PI * 2);
       }
     });
   }
 
-  _basicSquare(args: BasicFigureDrawArgs): void {
+  _drawSquare(args: DrawArgs): void {
     const { size, context } = args;
 
     this._rotateFigure({
       ...args,
       draw: () => {
+        context.moveTo(0, 0)
         context.rect(-size / 2, -size / 2, size, size);
       }
     });
   }
 
-  _drawDot({ x, y, size, context, rotation }: DrawArgs): void {
-    this._basicDot({ x, y, size, context, rotation });
-  }
-
-  _drawSquare({ x, y, size, context, rotation }: DrawArgs): void {
-    this._basicSquare({ x, y, size, context, rotation });
-  }
 }
